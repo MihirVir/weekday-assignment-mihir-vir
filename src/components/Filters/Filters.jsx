@@ -8,11 +8,11 @@ const Filters = () => {
     <div className = "filter">
         <div className="filter-container">
             <Select name = "Roles" />
-            <input type = "text" />
-            <input type = "text" />
-            <input type = "text" />
-            <input type = "text" />
-            <input type = "text" />
+            <Select name = "Number of Employees" />
+            <Select name = "Experience" />
+            <Select name = "Remote" />
+            <Select name = "Minimum Base Pay Salary" />
+            <Select name = "Search Company" />
         </div>
     </div>
   )

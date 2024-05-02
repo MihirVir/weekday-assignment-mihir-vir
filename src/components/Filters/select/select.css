@@ -1,12 +1,64 @@
 .select {
-
+    position: relative;
 }
 .select-container {
-    min-width: 10rem;
+    min-width: 10%;
     height: 10%;
-    background-color: black;
+    background-color: white;
+    border: 1px solid #e2e8f0;
     color: white;
     display: flex;
+    border-radius: 2px;
     justify-content: space-between;
     padding: .25rem;
+}
+.select-name > input {
+    outline: none;
+    border: none;
+    font-size: .8rem;
+    width: 100%;
+}
+
+.select-name > input::placeholder {
+    color: #52525b;
+}
+
+.select-container:focus-within {
+    border-color: #06b6d4;
+}
+
+.select-name {
+    min-width: 80%;
+    margin-right: .4rem;
+}
+.select-icon-wrapper {
+    border-left: 1px solid #e2e8f0;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.select-icon {
+    color: #52525b;
+}
+
+.options-menu-contianer {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #e2e8f0;
+}
+
+
+.options-menu-contianer > ul > li {
+    list-style: none;
+    padding: .5rem;
+    cursor: pointer;
+    font-size: .85rem;
+    transform: all 150ms ease;
+}
+.options-menu-contianer > ul > li:hover {
+    background-color: #cffafe;
 }
