@@ -43,4 +43,4 @@ const Card = ({ handleReadMore, post, readMore }) => {
   )
 }
 
-export default Card
+export default React.memo(Card);

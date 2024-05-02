@@ -53,7 +53,7 @@ const SearchProvider = ({ children }) => {
             fetchData();
         }
         fetchData();
-    }, [filters,data]);
+    }, []);
 
     const fetchMoreData = async () => {
         try {

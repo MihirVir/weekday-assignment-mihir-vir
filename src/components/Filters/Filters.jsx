@@ -2,15 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import "./filters.css";
 import Select from './select/Select';
 import { SearchContext } from '../../context/search-context';
-
-const number_of_emp = ["1-10", "11-20", "21-50", "51-100", "101-200", "201-500", "500+"];
-
-const exp = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-const location = ["Remote","Hybrid", "In-office"]
-
-const salary_data = ["0K","10K","20K","30K","40K","50K","60K","70K"]
-
+import { number_of_emp, salary_data, location, exp } from '../../data/company-data';
 const Filters = () => {
   const {data} = useContext(SearchContext);
   const [roles, setRoles] = useState([]);

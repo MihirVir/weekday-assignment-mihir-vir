@@ -52,6 +52,14 @@
     z-index: 100;
 }
 
+.delete-data {
+    color: black;
+    font-size: .8rem;
+    display: flex;
+    align-items: center;
+    margin-right: .5rem;
+    cursor: pointer;
+}
 
 .options-menu-contianer > ul > li {
     list-style: none;
