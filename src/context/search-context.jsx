@@ -7,6 +7,7 @@ const SearchProvider = ({ children }) => {
     const [data, setData] = useState([]);
     const [offset, setOffset] = useState(0);
     const limit = 10;
+    const [loading, setLoading] = useState(false);
     const [filters, setFilters] = useState({
         jobRole: '',
         minExp: null,
@@ -30,6 +31,7 @@ const SearchProvider = ({ children }) => {
 
     useEffect(() => {
         const fetchData = async () => {
+            setLoading(true);
             try {
                 const res = await useFetch("https://api.weekday.technology/adhoc/getSampleJdJSON", {
                     method: "POST",
@@ -42,6 +44,8 @@ const SearchProvider = ({ children }) => {
                 setData(res);
             } catch (err) {
                 console.error(err);
+            } finally {
+                setLoading(false);
             }
         };
         if (
@@ -56,6 +60,7 @@ const SearchProvider = ({ children }) => {
     }, []);
 
     const fetchMoreData = async () => {
+        setLoading(true)
         try {
             const res = await useFetch("https://api.weekday.technology/adhoc/getSampleJdJSON", {
                     method: "POST",
@@ -69,6 +74,8 @@ const SearchProvider = ({ children }) => {
             setOffset(prevOffset => prevOffset + limit);
         } catch (err) {
             console.error(err);
+        } finally {
+            setLoading(false);
         }
     };
 
@@ -77,7 +84,7 @@ const SearchProvider = ({ children }) => {
     }
 
     return (
-        <SearchContext.Provider value={{ data: filteredData, fetchMoreData, updateData, setFilters }}>
+        <SearchContext.Provider value={{ data: filteredData, fetchMoreData, updateData, setFilters, loading }}>
             {children}
         </SearchContext.Provider>
     );

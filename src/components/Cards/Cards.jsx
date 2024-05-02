@@ -2,6 +2,7 @@ import React, { useContext, useState, useCallback } from 'react';
 import "./cards.css";
 import { SearchContext } from '../../context/search-context';
 import Card from './Card';
+import Loading from '../Loading/Loading';
 
 const Cards = () => {
   const [readMore, setReadMore] = useState(null);
@@ -11,7 +12,7 @@ const Cards = () => {
     setReadMore(prevId => (prevId === id ? null : id));
   }, []);
 
-  console.log(data);
+  
   return (
     <>
       <div className="card-section-container">

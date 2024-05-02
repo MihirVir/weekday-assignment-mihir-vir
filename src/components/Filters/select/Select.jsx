@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback, useContext } from 'react';
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
-import "./select.css";
 import { SearchContext } from '../../../context/search-context';
+import "./select.css";
 
 /**
  * 
