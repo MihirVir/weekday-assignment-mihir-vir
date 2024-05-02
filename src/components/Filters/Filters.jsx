@@ -34,6 +34,7 @@ const Filters = () => {
             <Select name = "Experience" options={exp}/>
             <Select name = "Remote" options={location}/>
             <Select name = "Minimum Base Pay Salary" options={salary_data}/>
+            <Select name = "company name" dropdown = {false}/>
         </div>
     </div>
   )

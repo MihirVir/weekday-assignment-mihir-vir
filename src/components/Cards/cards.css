@@ -1,0 +1,119 @@
+.card-section-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    min-height: 50vh;
+    margin-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+.card-container {
+    width: 80%;
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem; 
+    height: auto;
+}
+
+.card-wrapper {
+    height: 50vh; 
+    width: 100%; /* Set the width to 100% to occupy the column */
+    padding: 1rem;
+    border-radius: 5px;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    flex-direction: column;
+    transition: all 100ms ease;
+    gap: 10px;
+    box-shadow: 1px 1px 4px 1px rgba(0, 0, 0, .1);
+}
+
+.posted {
+    background-color: white;
+    color: gray;
+    border: 1px solid #e2e8f0;
+    box-shadow: 1px 0px 4px rgba(0, 0, 0, .1);
+    font-size: .7rem;
+    padding: .5rem;
+    border-radius: 4px;
+    width: 40%;
+}
+
+.company-img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+.company-details {
+    display: flex;
+    align-items: start;
+    margin-top: .5rem;
+}
+.position-information {
+    margin-left: .5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.company-name {
+    font-size: .7rem;
+    color: gray;
+}
+
+.job-role {
+    font-size: .85rem;
+    color: rgb(53, 53, 53);
+}
+
+.job-location {
+    font-size: .7rem;
+}
+
+.salary-information > span {
+    font-size: .9rem;
+    color: #808080;
+    font-weight: 300;
+}
+
+.about-header {
+    font-weight: 400;
+}
+
+.about-company-desc {
+    font-size: .8rem;
+    font-weight: 300;
+}
+.minimum-experience-required > h4 {
+    font-weight: 500;
+    font-size: .9rem;
+    counter-reset: gray;
+}
+.minimum-experience-required > span {
+    font-weight: 400;
+    font-size: .8rem;
+    counter-reset: gray;
+}
+.apply-btn {
+    padding: .75rem;
+    border: none;
+    outline: none;
+    background-color: #6ee7b7;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+.card-wrapper:hover {
+    transform: scale(1.01)
+}
+
+.read-more-btn {
+    background-color: transparent;
+    border: none;
+    overflow: none;
+    color: #0e7490;
+    cursor: pointer;
+}

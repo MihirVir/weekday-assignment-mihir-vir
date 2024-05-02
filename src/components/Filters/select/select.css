@@ -2,8 +2,7 @@
     position: relative;
 }
 .select-container {
-    min-width: 10%;
-    height: 10%;
+    height: 20%;
     background-color: white;
     border: 1px solid #e2e8f0;
     color: white;
@@ -11,6 +10,7 @@
     border-radius: 2px;
     justify-content: space-between;
     padding: .25rem;
+    box-shadow: 1px 1px 8px rgba(0, 0, 0, .15);
 }
 .select-name > input {
     outline: none;
@@ -49,6 +49,7 @@
     width: 100%;
     background-color: white;
     border: 1px solid #e2e8f0;
+    z-index: 100;
 }
 
 
