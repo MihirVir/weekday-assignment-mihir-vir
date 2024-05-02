@@ -20,7 +20,7 @@ const Card = ({ handleReadMore, post, readMore }) => {
                             </div>
                         </div>
                         <div className="salary-information">
-                            <span>Estimated Salary: ${post.currency}{post.maxJdSalary}k</span>
+                            <span>Estimated Salary:  ${post.currency}{post.minJdSalary || 0}k - ${post.currency}{post.maxJdSalary || 0}k</span>
                         </div>
 
                         <div className="about-company-container">
@@ -33,7 +33,7 @@ const Card = ({ handleReadMore, post, readMore }) => {
                         </div>
                         <div className="minimum-experience-required">
                             <h4>Minimum Experience:</h4>
-                            <span>1 years</span>
+                            <span>{post.minExp || "not disclosed"} years</span>
                         </div>
                         <button className = "apply-btn">
                             ⚡ Easy Apply

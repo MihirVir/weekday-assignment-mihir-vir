@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./filters.css";
 import Select from './select/Select';
 import { SearchContext } from '../../context/search-context';
@@ -9,31 +9,26 @@ const exp = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
 const location = ["Remote","Hybrid", "In-office"]
 
-const salary_data = ["0L","10L","20L","30L","40L","50L","60L","70L"]
+const salary_data = ["0K","10K","20K","30K","40K","50K","60K","70K"]
 
 const Filters = () => {
   const {data} = useContext(SearchContext);
-  
-  function filterRoles() {
-    const filteredRoles = new Set();
+  const [roles, setRoles] = useState([]);
 
-    data.forEach(job => {
-        if (job.jobRole !== null) {
-            filteredRoles.add(job.jobRole); 
-        }
-    });
-    
-    return [...filteredRoles];
-  }
+  useEffect(() => {
+    const filteredRoles = Array.from(new Set(data.map(job => job.jobRole).filter(role => role !== null)));
+    setRoles(filteredRoles);
+  }, [data])
+
 
   return (
     <div className = "filter">
         <div className="filter-container">
-            <Select name = "Roles" options = {filterRoles()}/>
+            <Select name = "Roles" options = {roles} objectName = "jobRole"/>
             <Select name = "Number of Employees"  options={number_of_emp}/>
-            <Select name = "Experience" options={exp}/>
-            <Select name = "Remote" options={location}/>
-            <Select name = "Minimum Base Pay Salary" options={salary_data}/>
+            <Select name = "Experience" options={exp} objectName = "minExp"/>
+            <Select name = "Remote" options={location} objectName = "location"/>
+            <Select name = "Minimum Base Pay Salary" options={salary_data} objectName = "minJdSalary"/>
             <Select name = "company name" dropdown = {false}/>
         </div>
     </div>

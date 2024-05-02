@@ -10,7 +10,7 @@ const Cards = () => {
     setReadMore(prevId => (prevId === id ? null : id));
   }
 
-  console.log(data)
+  console.log(data);
   return (
     <>
         <div className="card-section-container">
