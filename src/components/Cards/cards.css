@@ -67,10 +67,12 @@
 .job-role {
     font-size: .85rem;
     color: rgb(53, 53, 53);
+    text-transform: capitalize;
 }
 
 .job-location {
     font-size: .7rem;
+    text-transform: capitalize;
 }
 
 .salary-information > span {

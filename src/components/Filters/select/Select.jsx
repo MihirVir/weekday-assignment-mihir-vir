@@ -75,10 +75,17 @@ const Select = React.memo(({ name, options, dropdown = true, objectName = "" }) 
   useEffect(() => {
     const deb = setTimeout(() => {
       filterOptions();
+
+      if (objectName === "companyName") {
+        setFilters(prev => ({
+            ...prev,
+            [objectName]: val
+        }))  
+      }
     }, 500);
 
     return () => clearTimeout(deb);
-  }, [val, filterOptions]);
+  }, [val, filterOptions, objectName, setFilters]);
 
   const handleInputChange = (e) => {
     setVal(e.target.value);

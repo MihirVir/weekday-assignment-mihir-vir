@@ -1,17 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { company_name } from "../../data/company-data";
+import React from "react";
 
 const Card = ({ handleReadMore, post, readMore }) => {
-  const [randomIndex, setRandomIndex] = useState(0);
-  const [randomCompany, setRandomCompany] = useState({ name: "", img_src: "" });
-
-  useEffect(() => {
-    const randomIndex = Math.floor(Math.random() * company_name.length);
-    const randomCompany = company_name[randomIndex];
-    setRandomIndex(randomIndex);
-    setRandomCompany(randomCompany);
-  }, []);
-
   return (
     <>
       <div key={post.jdUid} className="card-wrapper">
@@ -19,11 +8,11 @@ const Card = ({ handleReadMore, post, readMore }) => {
         <div className="company-details">
           <img
             className="company-img"
-            src={randomCompany.img_src}
+            src={post.company.img_src}
             alt="error loading company image"
           />
           <div className="position-information">
-            <span className="company-name">{randomCompany.name}</span>
+            <span className="company-name">{post.company.name}</span>
             <span className="job-role">{post.jobRole}</span>
             <span className="job-location">{post.location}</span>
           </div>

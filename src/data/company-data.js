@@ -11,4 +11,4 @@ export const company_name = [
     {name: "Amazon", img_src: "https://cdn.logojoy.com/wp-content/uploads/20230629132639/current-logo-600x338.png"},
     {name: "Google", img_src: "https://cdn2.hubspot.net/hubfs/53/image8-2.jpg"},
     {name: "Netflix", img_src: "https://images.ctfassets.net/4cd45et68cgf/Rx83JoRDMkYNlMC9MKzcB/2b14d5a59fc3937afd3f03191e19502d/Netflix-Symbol.png?w=700&h=456"}
-]
+];
