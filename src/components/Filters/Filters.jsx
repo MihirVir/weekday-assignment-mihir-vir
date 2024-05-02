@@ -12,12 +12,12 @@ const location = ["Remote","Hybrid", "In-office"]
 const salary_data = ["0L","10L","20L","30L","40L","50L","60L","70L"]
 
 const Filters = () => {
-  const jobPosts = useContext(SearchContext);
+  const {data} = useContext(SearchContext);
   
   function filterRoles() {
     const filteredRoles = new Set();
 
-    jobPosts.forEach(job => {
+    data.forEach(job => {
         if (job.jobRole !== null) {
             filteredRoles.add(job.jobRole); 
         }
