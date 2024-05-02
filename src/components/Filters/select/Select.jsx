@@ -5,7 +5,6 @@ import "./select.css";
 const Select = ({name, options}) => {
   const [isOpen, setIsOpen] = useState(false);
   const inputRef = useRef(null);
-
   function handleIsOpen() {
     setIsOpen(prev => !prev)
 
@@ -27,9 +26,9 @@ const Select = ({name, options}) => {
         {isOpen && (
             <div className="options-menu-contianer">
                 <ul>
-                    <li>Something</li>
-                    <li>has</li>
-                    <li>to</li>
+                    {options.map((item) => (
+                        <li>{item}</li>
+                    ))}
                 </ul>
             </div>
         )}
