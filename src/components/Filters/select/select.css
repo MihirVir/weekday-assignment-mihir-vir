@@ -1,0 +1,12 @@
+.select {
+
+}
+.select-container {
+    min-width: 10rem;
+    height: 10%;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: .25rem;
+}
