@@ -54,8 +54,32 @@ const SearchProvider = ({ children }) => {
      * Fetches initial data on when component is mounted
      */
     useEffect(() => {
-        fetchMoreData();
+        fetchInitialData(); 
     }, []);
+    /**
+     * Fetches initial data from the API.
+     */
+    const fetchInitialData = async () => {
+        setLoading(true);
+        try {
+            const res = await useFetch("https://api.weekday.technology/adhoc/getSampleJdJSON", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: {"limit": limit, "offset": 0}
+            });
+            const dataWithCompanyInfo = res.map(item => ({
+                ...item,
+                company: getRandomCompany(),
+            }));   
+            setData(dataWithCompanyInfo);
+        } catch (err) {
+            console.error(err);
+        } finally {
+            setLoading(false);
+        }
+    };
     /**
      * It's kind of pagination.
      */
@@ -77,8 +101,8 @@ const SearchProvider = ({ children }) => {
                     ...item,
                     company: getRandomCompany() 
                 }));
+    
                 setData(prevData => [...prevData, ...newDataWithCompanyInfo]); 
-                console.log(data, nextOffset);
                 setOffset(nextOffset);
             }
         } catch (err) {
