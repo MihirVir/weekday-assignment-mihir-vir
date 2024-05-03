@@ -13,7 +13,6 @@ import Card from './Card';
 const Cards = () => {
   const [readMore, setReadMore] = useState(null);
   const { data } = useContext(SearchContext);
-
   /**
    * To handle expanding and collapsing "read more" section of the card
    * 
@@ -30,7 +29,7 @@ const Cards = () => {
         <div className="card-container">
           {data.map((post, id) => (
             <Card
-              key={post.jdUid}
+              key={id}
               handleReadMore={handleReadMore}
               post={post}
               readMore={readMore}

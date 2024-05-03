@@ -27,7 +27,7 @@ const SearchProvider = ({ children }) => {
         minJdSalary: null,
         companyName: ''
     });
-
+    const [offset, setOffset] = useState(0);
     /**
      * Memoized filtered data based on current filters.
      * Triggers when data or filters changes 
@@ -54,59 +54,40 @@ const SearchProvider = ({ children }) => {
      * Fetches initial data on when component is mounted
      */
     useEffect(() => {
-        fetchInitialData(); 
+        fetchMoreData();
     }, []);
-    /**
-     * Fetches initial data from the API.
-     */
-    const fetchInitialData = async () => {
-        setLoading(true);
-        try {
-            const res = await useFetch("https://api.weekday.technology/adhoc/getSampleJdJSON", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({"limit": limit, "offset": 0})
-            });
-            const dataWithCompanyInfo = res.map(item => ({
-                ...item,
-                company: getRandomCompany(),
-            }));
-            setData(dataWithCompanyInfo);
-        } catch (err) {
-            console.error(err);
-        } finally {
-            setLoading(false);
-        }
-    };
     /**
      * It's kind of pagination.
      */
     const fetchMoreData = async () => {
         setLoading(true);
+        const nextOffset = offset + limit; 
         try {
             const res = await useFetch("https://api.weekday.technology/adhoc/getSampleJdJSON", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
-                body: JSON.stringify({"limit": limit, "offset": data.length})
+                body: {"limit": limit, "offset": nextOffset}
             });
-            // modifying the array which is obtained from the data we fetched
-            // adding random company names and image for filteration requirements
-            const newDataWithCompanyInfo = res
-                .map(item => ({
+    
+            
+            if (res && res.length > 0) {
+                const newDataWithCompanyInfo = res.map(item => ({
                     ...item,
-                    company: getRandomCompany()
+                    company: getRandomCompany() 
                 }));
-            setData(prevData => [...prevData, ...newDataWithCompanyInfo]);
+                setData(prevData => [...prevData, ...newDataWithCompanyInfo]); 
+                console.log(data, nextOffset);
+                setOffset(nextOffset);
+            }
         } catch (err) {
             console.error(err);
         } finally {
             setLoading(false);
         }
     };
+    
 
     /**
      * Retrieves a random company from the company_name array.

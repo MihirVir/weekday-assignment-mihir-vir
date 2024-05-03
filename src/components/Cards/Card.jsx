@@ -1,21 +1,21 @@
 import React from "react";
 
 const Card = ({ handleReadMore, post, readMore, id }) => {
+    const handleRedirect = (link) => {
+      console.log(post);
+      window.location.href = link;
+    };
   
-  const handleRedirect = (link) => {
-    console.log(post)
-    window.location.href = link;
-  }
+    const isExpanded = readMore === id;
   
-  return (
-    <>
-      <div key={id} className="card-wrapper">
+    return (
+      <div className="card-wrapper">
         <span className="posted">posted 13 days ago</span>
         <div className="company-details">
           <img
             className="company-img"
             src={post.company.img_src}
-            alt="error loading company image"
+            alt={`${post.company.name} company image`}
           />
           <div className="position-information">
             <span className="company-name">{post.company.name}</span>
@@ -30,20 +30,18 @@ const Card = ({ handleReadMore, post, readMore, id }) => {
             {post.maxJdSalary || 0}k
           </span>
         </div>
-
         <div className="about-company-container">
           <h4 className="about-header">About Company:</h4>
           <h5>About us</h5>
           <span className="about-company-desc">
-            {post.jdUid === readMore
+            {isExpanded
               ? post.jobDetailsFromCompany.substring(0, 100)
               : post.jobDetailsFromCompany.substring(0, 60)}
-            
             <button
-              onClick={() => handleReadMore(post.jdUid)}
+              onClick={() => handleReadMore(id)}
               className="read-more-btn"
             >
-              {post.jdUid === readMore ? "read less" : "read more"}
+              {isExpanded ? "read less" : "read more"}
             </button>
           </span>
         </div>
@@ -51,10 +49,10 @@ const Card = ({ handleReadMore, post, readMore, id }) => {
           <h4>Minimum Experience:</h4>
           <span>{post.minExp || "not disclosed"} years</span>
         </div>
-        <button onClick = {() => handleRedirect(post.jdLink)} className="apply-btn">⚡ Easy Apply</button>
+        <button onClick={() => handleRedirect(post.jdLink)} className="apply-btn">⚡ Easy Apply</button>
       </div>
-    </>
-  );
-};
+    );
+  };
+    
 
 export default React.memo(Card);
