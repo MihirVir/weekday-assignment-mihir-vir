@@ -119,3 +119,61 @@
     color: #0e7490;
     cursor: pointer;
 }
+
+@media screen and (max-height: 760px) {
+    .card-wrapper {
+        height: 55vh;
+    }
+}
+@media screen and (max-height: 690px) {
+    .card-wrapper {
+        height: 60vh;
+    }
+}
+@media screen and (max-height: 630px) {
+    .card-wrapper {
+        height: 65vh;
+    }
+}
+@media screen and (max-height: 580px) {
+    .card-wrapper {
+        height: 75vh;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+   .card-container {
+    grid-template-columns: repeat(2, 1fr);
+   } 
+   .posted {
+        width: 50%;
+   }
+}
+@media screen and (max-width: 698px) {
+    .card-container {
+        grid-template-columns: repeat(1, 1fr);
+    } 
+    .card-wrapper {
+        height: 50vh;
+    }
+ }
+ @media screen and (max-width: 530px) {
+    
+    .card-wrapper {
+        height: 55vh;
+    }
+ }
+
+ @media screen and (max-width: 440px) {
+    .card-container {
+        grid-template-columns: repeat(1, 1fr);
+    } 
+    .card-wrapper {
+        height: 52vh;
+    }
+ }
+ @media screen and (max-width: 414px) {
+    .card-wrapper {
+        height: 46vh;
+    }
+ }

@@ -2,11 +2,22 @@ import React, { createContext, useState, useEffect, useMemo } from 'react';
 import useFetch from '../hooks/use-fetch';
 import { company_name } from '../data/company-data'; 
 
+/**
+ * 
+ * Context for managing search state, data fetching and filters.
+ * 
+ * @type {React.Context} 
+ */
 const SearchContext = createContext();
 
+/**
+ * 
+ * @param {object} props - Data passed to the component
+ * @param {React.ReactNode} props.children - Child Elements wrapped by provider
+ * @returns {JSX.Element} 
+ */
 const SearchProvider = ({ children }) => {
     const [data, setData] = useState([]);
-    const [offset, setOffset] = useState(0);
     const limit = 10;
     const [loading, setLoading] = useState(false);
     const [filters, setFilters] = useState({
@@ -17,6 +28,12 @@ const SearchProvider = ({ children }) => {
         companyName: ''
     });
 
+    /**
+     * Memoized filtered data based on current filters.
+     * Triggers when data or filters changes 
+     * 
+     * @type {Array<object>} An array of filtered data objects.
+     */
     const filteredData = useMemo(() => {
         return data.filter(item => {
             const companyNameRegex = new RegExp(filters.companyName, 'i')
@@ -33,10 +50,15 @@ const SearchProvider = ({ children }) => {
         });
     }, [data, filters]);
 
+    /**
+     * Fetches initial data on when component is mounted
+     */
     useEffect(() => {
         fetchInitialData(); 
     }, []);
-
+    /**
+     * Fetches initial data from the API.
+     */
     const fetchInitialData = async () => {
         setLoading(true);
         try {
@@ -58,7 +80,9 @@ const SearchProvider = ({ children }) => {
             setLoading(false);
         }
     };
-
+    /**
+     * It's kind of pagination.
+     */
     const fetchMoreData = async () => {
         setLoading(true);
         try {
@@ -69,10 +93,13 @@ const SearchProvider = ({ children }) => {
                 },
                 body: JSON.stringify({"limit": limit, "offset": data.length})
             });
-            const newDataWithCompanyInfo = res.map(item => ({
-                ...item,
-                company: getRandomCompany()
-            }));
+            // modifying the array which is obtained from the data we fetched
+            // adding random company names and image for filteration requirements
+            const newDataWithCompanyInfo = res
+                .map(item => ({
+                    ...item,
+                    company: getRandomCompany()
+                }));
             setData(prevData => [...prevData, ...newDataWithCompanyInfo]);
         } catch (err) {
             console.error(err);
@@ -81,6 +108,10 @@ const SearchProvider = ({ children }) => {
         }
     };
 
+    /**
+     * Retrieves a random company from the company_name array.
+     * @returns {object} A random company object.
+     */
     const getRandomCompany = () => {
         const randomIndex = Math.floor(Math.random() * company_name.length);
         return company_name[randomIndex];

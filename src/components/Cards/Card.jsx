@@ -1,9 +1,15 @@
 import React from "react";
 
-const Card = ({ handleReadMore, post, readMore }) => {
+const Card = ({ handleReadMore, post, readMore, id }) => {
+  
+  const handleRedirect = (link) => {
+    console.log(post)
+    window.location.href = link;
+  }
+  
   return (
     <>
-      <div key={post.jdUid} className="card-wrapper">
+      <div key={id} className="card-wrapper">
         <span className="posted">posted 13 days ago</span>
         <div className="company-details">
           <img
@@ -32,6 +38,7 @@ const Card = ({ handleReadMore, post, readMore }) => {
             {post.jdUid === readMore
               ? post.jobDetailsFromCompany.substring(0, 100)
               : post.jobDetailsFromCompany.substring(0, 60)}
+            
             <button
               onClick={() => handleReadMore(post.jdUid)}
               className="read-more-btn"
@@ -44,7 +51,7 @@ const Card = ({ handleReadMore, post, readMore }) => {
           <h4>Minimum Experience:</h4>
           <span>{post.minExp || "not disclosed"} years</span>
         </div>
-        <button className="apply-btn">⚡ Easy Apply</button>
+        <button onClick = {() => handleRedirect(post.jdLink)} className="apply-btn">⚡ Easy Apply</button>
       </div>
     </>
   );
