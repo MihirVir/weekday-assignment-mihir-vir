@@ -3,9 +3,21 @@ import { SearchContext } from '../../context/search-context';
 import { MdOutlineRefresh } from "react-icons/md";
 import Loading from '../Loading/Loading';
 
+/**
+ * 
+ * A component to display a button for fetching more data. [Infinite Scroll]
+ * 
+ * @returns {JSX.Element}
+ * 
+ */
 const FetchMore = () => {
     const { fetchMoreData, loading } = useContext(SearchContext);
 
+    /**
+     * 
+     * Function to handle fetching more data.
+     * 
+     */
     const handleFetchMore = () => {
         fetchMoreData();
     };

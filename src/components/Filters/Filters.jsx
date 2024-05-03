@@ -4,11 +4,20 @@ import Select from './select/Select';
 import { SearchContext } from '../../context/search-context';
 import { number_of_emp, salary_data, location, exp, company_name } from '../../data/company-data';
 
+/**
+ * 
+ * A component to display filters for refining search results.
+ * 
+ * @returns {JSX.Element}
+ */
 const Filters = () => {
-  const { data, updateData } = useContext(SearchContext);
+  // Accessing data from the SearchContext
+  const { data } = useContext(SearchContext);
   const [roles, setRoles] = useState([]);
   const [cName, setCName] = useState([]);
+  
   useEffect(() => {
+    // Extracting unique roles and company names from the data.
     const filteredRoles = Array.from(new Set(data.map(job => job.jobRole).filter(role => role !== null)));
     const filteredCompanies = Array.from(new Set(data.map(job => job.company.name)))
     setRoles(filteredRoles);

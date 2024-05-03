@@ -48,3 +48,8 @@ Context shines best when you need to transfer data from parent to  child compone
 - data [contains dummy data]
 - context [contians search context]
 - pages [if in future you wan't to scale the application making it a multi page app that's why I used the directory]
+
+## Hosting options 
+As hosting is not required for this task I will only be discussing two options to consider hosting the website in the near future.
+- vercel: could've hosted it on vercel it's free to host there
+- AWS: I could've used AWS S3's static site hosting option and CDN to host the website.

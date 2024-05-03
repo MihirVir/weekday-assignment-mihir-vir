@@ -3,10 +3,23 @@ import "./cards.css";
 import { SearchContext } from '../../context/search-context';
 import Card from './Card';
 
+/**
+ * 
+ * Displays a list of cards based on the data provided from the 
+ * SearchContext.
+ * 
+ * @returns {JSX.Element}
+ */
 const Cards = () => {
   const [readMore, setReadMore] = useState(null);
   const { data } = useContext(SearchContext);
 
+  /**
+   * To handle expanding and collapsing "read more" section of the card
+   * 
+   * @param {number} id - The id of the card
+   * 
+   */
   const handleReadMore = useCallback((id) => {
     setReadMore(prevId => (prevId === id ? null : id));
   }, []);
